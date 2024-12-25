@@ -1,0 +1,22 @@
+name: my_nicotine_app
+description: A Flutter web app for nicotine reduction with Google Sign-In & Firestore
+publish_to: "none"
+
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.5
+  cloud_firestore: ^4.7.0
+  firebase_auth: ^4.6.0
+  firebase_core: ^2.13.0
+  # google_sign_in is typically used for native mobile,
+  # but on web, FirebaseAuth can handle Google sign-in. 
+  # If you do sign-in on web, the recommended approach is just via firebase_auth.
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  test: ^1.21.0

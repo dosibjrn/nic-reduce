@@ -1,0 +1,43 @@
+Below is an example repository structure for a Flutter web app MVP, including:
+
+All Flutter code (MVP-level)
+Unit tests for the core logic
+Bash scripts (runnable on Windows Git Bash) to help set up and deploy to Azure Static Web Apps
+Placeholder secrets file (so you can keep sensitive data out of version control)
+Instructions on how to run tests, build the web app, and deploy to Azure
+Disclaimer: The Azure CLI commands and scripts below illustrate a possible setup. Adjust naming (e.g., resource group name, static web app name, region) to fit your Azure subscription and environment.
+
+
+
+6. Running the App for Web
+Install the FlutterFire CLI (if not done):
+bash
+Copy code
+dart pub global activate flutterfire_cli
+flutterfire configure
+This step generates/updates firebase_options.dart.
+Enable web:
+bash
+Copy code
+flutter config --enable-web
+flutter doctor
+Get packages:
+bash
+Copy code
+flutter pub get
+Run the app on web:
+bash
+Copy code
+flutter run -d chrome
+Build for release:
+bash
+Copy code
+flutter build web
+Then deploy build/web to your hosting (e.g., Azure Static Web Apps, Firebase Hosting, etc.).
+7. Summary
+Google Sign-In is handled via FirebaseAuth.instance.signInWithPopup(googleProvider) on the web.
+Firestore is used to store each user’s data in a document named by their uid.
+The MVP logic (daily reduction, next dose scheduling) remains the same—just replaced the local SharedPreferences storage with Firestore.
+We included a “Delete My Data” (basic GDPR) step in settings. Full compliance might require export features, detailed logs, etc.
+This approach scales to other providers (Apple, Facebook, Microsoft) by adding them to Firebase Auth’s sign-in methods.
+This code should provide a complete, expanded MVP that runs on Flutter Web with Google Sign-In for user accounts and Firestore for data persistence.
